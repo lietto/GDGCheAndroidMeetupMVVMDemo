@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.mvvm.list.ItemViewModel"/>
+    </data>
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.name}"
+            />
+
+        <ProgressBar
+            android:layout_width="match_parent"
+            android:layout_height="15dp"
+            android:progress="@{viewModel.progress}"
+            style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{(v) -> viewModel.startProgress()}"
+                android:text="Start"
+                />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{(v) -> viewModel.clearProgress()}"
+                android:text="Clear"
+                />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{(v) -> viewModel.deleteItem()}"
+                android:text="Delete"
+                />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</layout>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="handler"
+            type="com.example.mvvm.StartActivityHandler"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center">
+        <Button
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="@string/button_start_progress_list"
+            android:onClick="@{(v) -> handler.onStartProgressClick(v)}"
+            />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="40dp"/>
+        <Button
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="@string/button_start_weather_demo"
+            android:onClick="@{(v) -> handler.onStartWeatherClick(v)}"
+            />
+    </LinearLayout>
+
+</layout>
