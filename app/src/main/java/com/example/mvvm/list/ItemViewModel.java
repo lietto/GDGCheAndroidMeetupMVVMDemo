@@ -40,21 +40,25 @@ public class ItemViewModel extends BaseObservable {
 	}
 
 	public void clearProgress() {
-		repository.updateProgress(0, object.getId());
+		if (object.isValid())
+			repository.updateProgress(0, object.getId());
 	}
 
 	public void deleteItem() {
-		repository.deleteItem(object.getId());
+		if (object.isValid())
+			repository.deleteItem(object.getId());
 	}
 
 	private Runnable runnable = new Runnable() {
 		@Override
 		public void run() {
 
-			repository.updateProgress(getProgress() + 10, object.getId());
+			if (object.isValid()) {
+				repository.updateProgress(getProgress() + 10, object.getId());
 
-			if (getProgress() <= 100)
-				handler.postDelayed(runnable, 1000);
+				if (getProgress() <= 100)
+					handler.postDelayed(runnable, 1000);
+			}
 		}
 	};
 

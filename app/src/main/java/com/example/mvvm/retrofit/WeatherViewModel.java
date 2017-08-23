@@ -21,6 +21,6 @@ public class WeatherViewModel extends BaseObservable implements OrderedRealmColl
 		@Override
 		public void onChange(CityInfoRealm cityInfo) {
 			notifyPropertyChanged(BR.toolbarTitle);
-			notifyPropertyChanged(BR.conditionIcon);
+//			notifyPropertyChanged(BR.conditionIcon);
 		}
 	}
