@@ -16,10 +16,10 @@ import retrofit2.Response;
 
 public class WeatherCaller implements Callback<Weather> {
 
-	private final WeatherDAO weatherDAO;
+	private final WeatherRepository weatherRepository;
 
-	public WeatherCaller(WeatherDAO repository) {
-		this.weatherDAO = repository;
+	public WeatherCaller(WeatherRepository repository) {
+		this.weatherRepository = repository;
 	}
 
 	public void getWeatherForCity(final String city) {
@@ -30,7 +30,7 @@ public class WeatherCaller implements Callback<Weather> {
 	@Override
 	public void onResponse(Call<Weather> call, Response<Weather> response) {
 		if (response.isSuccessful())
-			weatherDAO.saveCityWeatherToRealm(response.body());
+			weatherRepository.saveCityWeatherToRealm(response.body());
 	}
 
 	@Override

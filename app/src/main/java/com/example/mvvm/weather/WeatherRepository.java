@@ -10,12 +10,12 @@ import io.realm.RealmResults;
  * Created by lietto on 28.05.17.
  */
 
-public class WeatherDAO {
+public class WeatherRepository {
 
 	private final Realm realmInstane;
 	private final RealmResults<WeatherRealm> weatherRealm;
 
-	public WeatherDAO() {
+	public WeatherRepository() {
 		realmInstane = Realm.getDefaultInstance();
 		weatherRealm = realmInstane.where(WeatherRealm.class).findAll();
 	}

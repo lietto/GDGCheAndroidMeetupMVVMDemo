@@ -12,14 +12,10 @@ import com.example.mvvm.weather.WeatherActivity;
 
 public class StartActivityHandler {
 
-
 	public void onStartProgressClick(View view) {
 		view.getContext().startActivity(new Intent(view.getContext(), ProgressActivity.class));
 	}
-
-
 	public void onStartWeatherClick(View view) {
 		view.getContext().startActivity(new Intent(view.getContext(), WeatherActivity.class));
 	}
-
 }

@@ -17,21 +17,21 @@ import io.realm.RealmResults;
 public class WeatherViewModel extends BaseObservable implements OrderedRealmCollectionChangeListener<RealmResults<WeatherRealm>> {
 
 	private final WeatherCaller weatherCaller;
-	private final WeatherDAO weatherDAO;
+	private final WeatherRepository weatherRepository;
 	public ObservableString searchCity = new ObservableString("Cherkasy");
 
 	public WeatherViewModel() {
-		weatherDAO = new WeatherDAO();
+		weatherRepository = new WeatherRepository();
 
-		weatherCaller = new WeatherCaller(weatherDAO);
+		weatherCaller = new WeatherCaller(weatherRepository);
 	}
 
 	public void onResume() {
-		weatherDAO.addChangeListener(this);
+		weatherRepository.addChangeListener(this);
 	}
 
 	public void onPause() {
-		weatherDAO.clearListeners();
+		weatherRepository.clearListeners();
 	}
 
 	@Bindable
@@ -41,12 +41,12 @@ public class WeatherViewModel extends BaseObservable implements OrderedRealmColl
 
 	@Bindable
 	public String getTemperature() {
-		return weatherDAO.getTemperatureIn(searchCity.get());
+		return weatherRepository.getTemperatureIn(searchCity.get());
 	}
 
 	@Bindable
 	public String getWeatherConditions() {
-		return weatherDAO.getWeatherConditionsIn(searchCity.get());
+		return weatherRepository.getWeatherConditionsIn(searchCity.get());
 	}
 
 	@Bindable
